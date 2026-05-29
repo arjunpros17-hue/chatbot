@@ -280,7 +280,10 @@ font-size:1.1rem;
 .gallery,
 .stats-grid,
 .tech-grid,
-.comparison-grid{
+.comparison-grid,
+.media-grid,
+.photo-grid,
+.video-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
@@ -291,7 +294,10 @@ gap:30px;
 .product-card,
 .stat-card,
 .tech-card,
-.comparison-card{
+.comparison-card,
+.media-card,
+.photo-card,
+.video-card{
 background:linear-gradient(135deg,#0b1120,#1a1f3a);
 padding:35px;
 border-radius:25px;
@@ -305,7 +311,10 @@ overflow:hidden;
 .feature-card::before,
 .product-card::before,
 .stat-card::before,
-.tech-card::before{
+.tech-card::before,
+.media-card::before,
+.photo-card::before,
+.video-card::before{
 content:'';
 position:absolute;
 top:0;
@@ -319,7 +328,11 @@ transition:.6s;
 .spec-card:hover::before,
 .feature-card:hover::before,
 .product-card:hover::before,
-.tech-card:hover::before{
+.stat-card:hover::before,
+.tech-card:hover::before,
+.media-card:hover::before,
+.photo-card:hover::before,
+.video-card:hover::before{
 left:100%;
 }
 
@@ -328,7 +341,10 @@ left:100%;
 .product-card:hover,
 .stat-card:hover,
 .tech-card:hover,
-.comparison-card:hover{
+.comparison-card:hover,
+.media-card:hover,
+.photo-card:hover,
+.video-card:hover{
 transform:translateY(-15px);
 box-shadow:0 20px 60px rgba(0,204,255,.3),inset 0 0 30px rgba(0,204,255,.1);
 border-color:rgba(0,204,255,.5);
@@ -338,7 +354,10 @@ border-color:rgba(0,204,255,.5);
 .feature-card h3,
 .product-card h3,
 .tech-card h3,
-.comparison-card h3{
+.comparison-card h3,
+.media-card h3,
+.photo-card h3,
+.video-card h3{
 margin-bottom:15px;
 color:#00ccff;
 font-size:1.3rem;
@@ -349,7 +368,10 @@ letter-spacing:1px;
 .feature-card p,
 .product-card p,
 .tech-card p,
-.comparison-card p{
+.comparison-card p,
+.media-card p,
+.photo-card p,
+.video-card p{
 line-height:1.8;
 color:#d0d8ff;
 font-size:.95rem;
@@ -357,7 +379,10 @@ font-size:.95rem;
 
 .spec-card .icon,
 .feature-card .icon,
-.tech-card .icon{
+.tech-card .icon,
+.media-card .icon,
+.photo-card .icon,
+.video-card .icon{
 font-size:2.5rem;
 color:#ff00ff;
 margin-bottom:15px;
@@ -384,6 +409,124 @@ cursor:pointer;
 transform:scale(1.05) rotateZ(1deg);
 box-shadow:0 0 40px #ff00ff,0 0 60px rgba(255,0,255,.3);
 border-color:#ff00ff;
+}
+
+/* ===== MEDIA SHOWCASE ===== */
+.media-showcase{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.media-item{
+background:linear-gradient(135deg,#0b1120,#1a1f3a);
+border-radius:25px;
+overflow:hidden;
+border:2px solid rgba(0,204,255,.2);
+transition:.5s;
+}
+
+.media-item:hover{
+transform:translateY(-15px);
+box-shadow:0 20px 60px rgba(0,204,255,.3);
+border-color:rgba(0,204,255,.5);
+}
+
+.media-item img,
+.media-item video{
+width:100%;
+height:300px;
+object-fit:cover;
+display:block;
+}
+
+.media-info{
+padding:25px;
+}
+
+.media-info h3{
+color:#00ccff;
+margin-bottom:10px;
+font-size:1.3rem;
+}
+
+.media-info p{
+color:#d0d8ff;
+line-height:1.6;
+font-size:.9rem;
+}
+
+/* ===== PHOTO GALLERY LIGHTBOX ===== */
+.lightbox-container{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+z-index:1000;
+align-items:center;
+justify-content:center;
+}
+
+.lightbox-container.active{
+display:flex;
+}
+
+.lightbox-content{
+position:relative;
+max-width:90%;
+max-height:90%;
+}
+
+.lightbox-content img{
+width:100%;
+height:auto;
+border-radius:20px;
+box-shadow:0 0 50px rgba(0,204,255,.5);
+}
+
+.lightbox-close{
+position:absolute;
+top:-40px;
+right:0;
+color:#00ccff;
+font-size:2.5rem;
+cursor:pointer;
+transition:.3s;
+}
+
+.lightbox-close:hover{
+color:#ff00ff;
+transform:scale(1.2);
+}
+
+.lightbox-nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+color:#00ccff;
+font-size:3rem;
+cursor:pointer;
+background:rgba(0,204,255,.2);
+padding:20px 30px;
+border-radius:10px;
+transition:.3s;
+}
+
+.lightbox-nav:hover{
+background:rgba(0,204,255,.4);
+color:#ff00ff;
+}
+
+.lightbox-prev{
+left:-80px;
+}
+
+.lightbox-next{
+right:-80px;
 }
 
 /* ===== VIDEO SECTION ===== */
@@ -501,7 +644,7 @@ margin-top:10px;
 letter-spacing:1px;
 }
 
-/* ===== COMPARISION TABLE ===== */
+/* ===== COMPARISON TABLE ===== */
 .comparison-table{
 width:100%;
 border-collapse:collapse;
@@ -609,6 +752,110 @@ font-weight:700;
 font-size:.85rem;
 }
 
+/* ===== CONNECT SECTION ===== */
+.connect-section{
+background:linear-gradient(135deg,rgba(255,0,255,.15),rgba(0,204,255,.15));
+border-radius:40px;
+padding:60px 40px;
+border:2px solid rgba(0,204,255,.3);
+margin:40px 0;
+}
+
+.connect-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.connect-card{
+background:linear-gradient(135deg,#0b1120,#1a1f3a);
+padding:40px;
+border-radius:25px;
+border:2px solid rgba(0,204,255,.2);
+text-align:center;
+transition:.5s;
+}
+
+.connect-card:hover{
+transform:translateY(-15px);
+box-shadow:0 20px 60px rgba(0,204,255,.3);
+border-color:#ff00ff;
+}
+
+.connect-card .icon{
+font-size:3.5rem;
+color:#ff00ff;
+margin-bottom:20px;
+}
+
+.connect-card h3{
+color:#00ccff;
+font-size:1.5rem;
+margin-bottom:15px;
+}
+
+.connect-card p{
+color:#d4ddff;
+line-height:1.7;
+}
+
+/* ===== IMAGE SHOWCASE ===== */
+.image-showcase{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.image-card{
+position:relative;
+border-radius:25px;
+overflow:hidden;
+border:2px solid rgba(0,204,255,.2);
+cursor:pointer;
+transition:.5s;
+}
+
+.image-card img{
+width:100%;
+height:350px;
+object-fit:cover;
+transition:.5s;
+}
+
+.image-card:hover{
+transform:scale(1.05);
+box-shadow:0 20px 60px rgba(0,204,255,.3);
+border-color:#ff00ff;
+}
+
+.image-card:hover img{
+filter:brightness(1.1);
+}
+
+.image-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,204,255,.2);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+transition:.5s;
+}
+
+.image-card:hover .image-overlay{
+opacity:1;
+}
+
+.image-overlay i{
+font-size:3rem;
+color:#ff00ff;
+}
+
 /* ===== FOOTER ===== */
 footer{
 padding:100px 8%;
@@ -706,6 +953,20 @@ justify-content:center;
 .spec-grid{
 grid-template-columns:repeat(2,1fr);
 }
+
+.lightbox-nav{
+top:20px;
+position:static;
+transform:none;
+}
+
+.lightbox-prev{
+left:auto;
+}
+
+.lightbox-next{
+right:auto;
+}
 }
 
 @media(max-width:600px){
@@ -754,12 +1015,19 @@ width:100%;
 .spec-grid,
 .features-grid,
 .products-grid,
-.gallery{
+.gallery,
+.media-grid,
+.photo-grid,
+.video-grid{
 grid-template-columns:1fr;
 }
 
 .video-section iframe{
 height:250px;
+}
+
+.connect-grid{
+grid-template-columns:1fr;
 }
 }
 
@@ -776,10 +1044,10 @@ height:250px;
 <li><a href="#design">DESIGN</a></li>
 <li><a href="#features">FEATURES</a></li>
 <li><a href="#tech">TECH SPECS</a></li>
+<li><a href="#connect">CONNECT</a></li>
+<li><a href="#media">MEDIA</a></li>
 <li><a href="#gallery">GALLERY</a></li>
 <li><a href="#products">PRODUCTS</a></li>
-<li><a href="#reviews">REVIEWS</a></li>
-<li><a href="#video">TRAILER</a></li>
 </ul>
 </nav>
 
@@ -797,7 +1065,7 @@ and next-generation ultra-performance standards.
 <div class="hero-buttons">
 <a href="#products" class="btn primary">🛒 BUY NOW</a>
 <a href="#gallery" class="btn secondary">📸 VIEW GALLERY</a>
-<a href="#video" class="btn primary">🎬 WATCH TRAILER</a>
+<a href="#media" class="btn primary">🎬 WATCH TRAILER</a>
 </div>
 </div>
 </section>
@@ -1026,19 +1294,190 @@ and zero-lag streaming capabilities.</p>
 </div>
 </section>
 
+<!-- ===== CONNECT SECTION ===== -->
+<section id="connect">
+<h2 class="section-title">🔗 COMPLETE ECOSYSTEM CONNECTION</h2>
+
+<p style="text-align:center;color:#d4ddff;margin-bottom:40px;font-size:1.1rem;">
+Connect and Control Everything in Your Life with OMNIFUSION X ULTRA
+</p>
+
+<div class="connect-section">
+<div class="connect-grid">
+
+<div class="connect-card">
+<div class="icon">🎮</div>
+<h3>Gaming Devices</h3>
+<p>Connect your PC, laptop, and gaming consoles. Sync settings, stream games, and control RGB lighting from one unified hub.</p>
+</div>
+
+<div class="connect-card">
+<div class="icon">📺</div>
+<h3>Smart TV & Home</h3>
+<p>Control your television, lighting, temperature, door locks, and security cameras instantly with voice or gesture commands.</p>
+</div>
+
+<div class="connect-card">
+<div class="icon">🚗</div>
+<h3>Connected Vehicle</h3>
+<p>AI-powered driving mode with real-time navigation, vehicle diagnostics, and autonomous driving assistance integration.</p>
+</div>
+
+<div class="connect-card">
+<div class="icon">⌚</div>
+<h3>Wearables & Accessories</h3>
+<p>Seamlessly connect smartwatches, earbuds, fitness trackers, and gaming accessories with instant synchronization.</p>
+</div>
+
+<div class="connect-card">
+<div class="icon">☁️</div>
+<h3>Cloud Services</h3>
+<p>Access quantum-encrypted cloud storage, backup gaming profiles, and stream AAA titles through AI-optimized servers.</p>
+</div>
+
+<div class="connect-card">
+<div class="icon">🌍</div>
+<h3>Global Network</h3>
+<p>5G/6G connectivity with satellite backup. Connect anywhere in the world with ultra-low latency and maximum speed.</p>
+</div>
+
+</div>
+</section>
+
+<!-- ===== MEDIA SECTION ===== -->
+<section id="media">
+<h2 class="section-title">🎬 MEDIA CENTER</h2>
+
+<div class="media-showcase">
+
+<div class="media-item">
+<video width="100%" height="300" controls>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<div class="media-info">
+<h3>🎥 Official Product Launch</h3>
+<p>Experience the complete OMNIFUSION X ULTRA launch event featuring cutting-edge technology demonstrations and live gaming competitions.</p>
+</div>
+</div>
+
+<div class="media-item">
+<video width="100%" height="300" controls>
+<source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<div class="media-info">
+<h3>🎮 Gaming Performance Demo</h3>
+<p>Watch professional esports players showcase the incredible 240Hz display, AI gaming engine, and liquid cooling system in action.</p>
+</div>
+</div>
+
+<div class="media-item">
+<video width="100%" height="300" controls>
+<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<div class="media-info">
+<h3>📸 AI Camera Showcase</h3>
+<p>Discover the capabilities of our 200MP AI camera with 8K video recording, night mode, and real-time object tracking.</p>
+</div>
+</div>
+
+<div class="media-item">
+<video width="100%" height="300" controls>
+<source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<div class="media-info">
+<h3>🔋 Battery & Charging Test</h3>
+<p>See the 300W HyperCharge in action - achieving 0-100% battery charge in just 8 minutes with zero heat generation.</p>
+</div>
+</div>
+
+</div>
+</section>
+
 <!-- ===== GALLERY SECTION ===== -->
 <section id="gallery">
 <h2 class="section-title">📸 CYBER GALLERY</h2>
 
-<div class="gallery">
+<div class="image-showcase">
+
+<div class="image-card" onclick="openLightbox(0)">
 <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e" alt="Futuristic Tech">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(1)">
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Gaming Setup">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(2)">
 <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="Phone Design">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(3)">
 <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="RGB Lighting">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(4)">
 <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Innovation">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(5)">
 <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8" alt="Performance">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(6)">
+<img src="https://images.unsplash.com/photo-1609042513639-29ba5f45a4b1" alt="RGB Aesthetic">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(7)">
+<img src="https://images.unsplash.com/photo-1617638924702-92d37e439220" alt="Holographic Display">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
+<div class="image-card" onclick="openLightbox(8)">
+<img src="https://images.unsplash.com/photo-1591165951843-c5005b2483c3" alt="AI Technology">
+<div class="image-overlay">
+<i class="fas fa-search-plus"></i>
+</div>
+</div>
+
 </div>
 </section>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox-container" id="lightbox">
+<div class="lightbox-content">
+<span class="lightbox-close" onclick="closeLightbox()">✕</span>
+<img id="lightbox-image" src="" alt="Gallery Image">
+<span class="lightbox-nav lightbox-prev" onclick="previousImage()">❮</span>
+<span class="lightbox-nav lightbox-next" onclick="nextImage()">❯</span>
+</div>
+</div>
 
 <!-- ===== SIGN-IN SECTION ===== -->
 <section style="padding:50px 8%;">
@@ -1234,8 +1673,8 @@ RGB mechanical keyboard, 165Hz 4K display, and AI performance optimization softw
 </table>
 </section>
 
-<!-- ===== REVIEWS SECTION ===== -->
-<section id="reviews">
+<!-- ===== TESTIMONIALS SECTION ===== -->
+<section>
 <h2 class="section-title">⭐ USER TESTIMONIALS</h2>
 
 <div class="testimonial-grid">
@@ -1294,3 +1733,89 @@ Combined with the 32GB RAM, this phone handles my entire creative workflow witho
 <p>Digital Content Creator • 300K TikTok</p>
 </div>
 </div>
+</div>
+
+</div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+<h2>OMNIFUSION X ULTRA</h2>
+<p>THE FUTURE OF AI GAMING</p>
+
+<div class="socials">
+<a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+<a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://discord.com" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+<a href="https://twitch.tv" target="_blank" title="Twitch"><i class="fab fa-twitch"></i></a>
+<a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 OMNIFUSION Technologies. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+<p>🚀 AVAILABLE SOON WORLDWIDE | STAY TUNED FOR LAUNCH UPDATES</p>
+</div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+
+// Lightbox functionality
+const images = [
+'https://images.unsplash.com/photo-1542751371-adc38448a05e',
+'https://images.unsplash.com/photo-1518770660439-4636190af475',
+'https://images.unsplash.com/photo-1511512578047-dfb367046420',
+'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
+'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8',
+'https://images.unsplash.com/photo-1609042513639-29ba5f45a4b1',
+'https://images.unsplash.com/photo-1617638924702-92d37e439220',
+'https://images.unsplash.com/photo-1591165951843-c5005b2483c3'
+];
+
+let currentImageIndex = 0;
+
+function openLightbox(index){
+currentImageIndex = index;
+document.getElementById('lightbox-image').src = images[index];
+document.getElementById('lightbox').classList.add('active');
+}
+
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('active');
+}
+
+function nextImage(){
+currentImageIndex = (currentImageIndex + 1) % images.length;
+document.getElementById('lightbox-image').src = images[currentImageIndex];
+}
+
+function previousImage(){
+currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+document.getElementById('lightbox-image').src = images[currentImageIndex];
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', function(event){
+if(document.getElementById('lightbox').classList.contains('active')){
+if(event.key === 'ArrowRight') nextImage();
+if(event.key === 'ArrowLeft') previousImage();
+if(event.key === 'Escape') closeLightbox();
+}
+});
+
+// Smooth scroll behavior
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e){
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if(target){
+target.scrollIntoView({behavior: 'smooth'});
+}
+});
+});
+
+</script>
+
+</body>
+</html>

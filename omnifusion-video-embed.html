@@ -1,0 +1,453 @@
+<!-- OMNIFUSION X ULTRA VIDEO EMBED SECTION -->
+<!-- Add this section to your omnifusion-index.html in the media section -->
+
+<style>
+/* Video Embed Styles */
+.video-embed-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 2px solid rgba(0, 204, 255, 0.3);
+  box-shadow: 0 0 50px rgba(0, 204, 255, 0.3);
+  margin: 40px 0;
+  background: #000;
+}
+
+.video-player {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background: #000;
+  overflow: hidden;
+}
+
+.video-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-player video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.9));
+  padding: 40px;
+  color: white;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.video-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00ccff;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.video-description {
+  font-size: 1rem;
+  color: #d4ddff;
+  line-height: 1.6;
+}
+
+.video-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff00ff, #00ccff);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
+}
+
+.video-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat-item i {
+  font-size: 1.3rem;
+  color: #ff00ff;
+}
+
+.stat-item span {
+  color: #d4ddff;
+  font-size: 0.95rem;
+}
+
+.video-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.video-thumbnail {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 204, 255, 0.2);
+  cursor: pointer;
+  transition: 0.5s;
+  background: #000;
+  aspect-ratio: 16/9;
+}
+
+.video-thumbnail:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 204, 255, 0.3);
+  border-color: #ff00ff;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.video-thumbnail:hover img {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #ff00ff, #00ccff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  z-index: 5;
+  transition: 0.3s;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+}
+
+.video-thumbnail:hover .play-button {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.video-meta {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 12px 15px;
+  border-radius: 10px;
+  z-index: 6;
+}
+
+.video-meta h4 {
+  color: #00ccff;
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.video-meta p {
+  color: #d4ddff;
+  font-size: 0.85rem;
+}
+
+.video-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.video-modal.active {
+  display: flex;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 80vh;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 2px solid #00ccff;
+  box-shadow: 0 0 60px rgba(0, 204, 255, 0.5);
+}
+
+.video-modal iframe,
+.video-modal video {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: #00ccff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(255, 0, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #00ccff;
+}
+
+.modal-close:hover {
+  color: #ff00ff;
+  border-color: #ff00ff;
+  transform: scale(1.2);
+}
+
+@media(max-width: 768px) {
+  .video-info-overlay {
+    padding: 25px;
+  }
+
+  .video-title {
+    font-size: 1.3rem;
+  }
+
+  .video-description {
+    font-size: 0.9rem;
+  }
+
+  .video-stats {
+    gap: 15px;
+  }
+
+  .modal-close {
+    top: 10px;
+    right: 10px;
+  }
+
+  .video-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<!-- MAIN VIDEO SHOWCASE -->
+<section style="padding: 120px 8%; position: relative;">
+  <h2 class="section-title">🎥 OMNIFUSION X ULTRA VIDEO SHOWCASE</h2>
+
+  <div class="video-embed-container">
+    <div class="video-player">
+      <iframe width="100%" height="600" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="OMNIFUSION X ULTRA Official Launch" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="video-info-overlay">
+      <div class="video-badge">🎬 OFFICIAL TRAILER</div>
+      <div class="video-title">OMNIFUSION X ULTRA - THE FUTURE IS HERE</div>
+      <div class="video-description">Experience the ultimate AI gaming phone ecosystem. Revolutionary 240Hz AMOLED display, liquid RGB cooling, and AI-powered performance optimization for esports champions.</div>
+      <div class="video-stats">
+        <div class="stat-item">
+          <i class="fas fa-eye"></i>
+          <span>2.5M Views</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-heart"></i>
+          <span>245K Likes</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-comment"></i>
+          <span>18K Comments</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-share"></i>
+          <span>92K Shares</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO GALLERY GRID -->
+<section style="padding: 100px 8%; position: relative;">
+  <h2 class="section-title">🎞️ COMPLETE VIDEO COLLECTION</h2>
+
+  <div class="video-gallery-grid">
+    <!-- Video 1 -->
+    <div class="video-thumbnail" onclick="openVideoModal(0)">
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&h=281&fit=crop" alt="Product Launch">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>Product Launch Event</h4>
+        <p>15:32 • 1.2M views</p>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-thumbnail" onclick="openVideoModal(1)">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&h=281&fit=crop" alt="Gaming Performance">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>Gaming Performance Demo</h4>
+        <p>12:45 • 892K views</p>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-thumbnail" onclick="openVideoModal(2)">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=281&fit=crop" alt="AI Camera">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>AI Camera 8K Showcase</h4>
+        <p>18:20 • 658K views</p>
+      </div>
+    </div>
+
+    <!-- Video 4 -->
+    <div class="video-thumbnail" onclick="openVideoModal(3)">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=281&fit=crop" alt="Cooling System">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>Liquid Cooling System</h4>
+        <p>8:15 • 425K views</p>
+      </div>
+    </div>
+
+    <!-- Video 5 -->
+    <div class="video-thumbnail" onclick="openVideoModal(4)">
+      <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=500&h=281&fit=crop" alt="Battery Charging">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>300W HyperCharge Test</h4>
+        <p>6:42 • 523K views</p>
+      </div>
+    </div>
+
+    <!-- Video 6 -->
+    <div class="video-thumbnail" onclick="openVideoModal(5)">
+      <img src="https://images.unsplash.com/photo-1609042513639-29ba5f45a4b1?w=500&h=281&fit=crop" alt="RGB Features">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>RGB Customization Guide</h4>
+        <p>10:18 • 387K views</p>
+      </div>
+    </div>
+
+    <!-- Video 7 -->
+    <div class="video-thumbnail" onclick="openVideoModal(6)">
+      <img src="https://images.unsplash.com/photo-1617638924702-92d37e439220?w=500&h=281&fit=crop" alt="Esports">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>Pro Esports Tournament</h4>
+        <p>25:10 • 1.5M views</p>
+      </div>
+    </div>
+
+    <!-- Video 8 -->
+    <div class="video-thumbnail" onclick="openVideoModal(7)">
+      <img src="https://images.unsplash.com/photo-1591165951843-c5005b2483c3?w=500&h=281&fit=crop" alt="Smart Home">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>Smart Home Integration</h4>
+        <p>14:35 • 298K views</p>
+      </div>
+    </div>
+
+    <!-- Video 9 -->
+    <div class="video-thumbnail" onclick="openVideoModal(8)">
+      <img src="https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=500&h=281&fit=crop" alt="Unboxing">
+      <div class="play-button">▶</div>
+      <div class="video-meta">
+        <h4>Premium Unboxing Experience</h4>
+        <p>11:22 • 756K views</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-content">
+    <span class="modal-close" onclick="closeVideoModal()">✕</span>
+    <iframe id="videoFrame" width="100%" height="100%" src="" title="Video Player" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+// Video URLs
+const videos = [
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  'https://www.youtube.com/embed/dQw4w9WgXcQ'
+];
+
+function openVideoModal(index) {
+  document.getElementById('videoFrame').src = videos[index];
+  document.getElementById('videoModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  document.getElementById('videoModal').classList.remove('active');
+  document.getElementById('videoFrame').src = '';
+  document.body.style.overflow = 'auto';
+}
+
+// Close on ESC key
+document.addEventListener('keydown', function(event) {
+  if(event.key === 'Escape') {
+    closeVideoModal();
+  }
+});
+
+// Close on background click
+document.getElementById('videoModal').addEventListener('click', function(e) {
+  if(e.target === this) {
+    closeVideoModal();
+  }
+});
+</script>

@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OMNIFUSION X ULTRA</title>
+<title>OMNIFUSION X ULTRA - AI Gaming Phone Ecosystem</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
@@ -23,6 +24,7 @@ color:white;
 overflow-x:hidden;
 }
 
+/* ===== NAVIGATION ===== */
 nav{
 position:fixed;
 width:100%;
@@ -32,40 +34,61 @@ padding:20px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,.5);
-backdrop-filter:blur(12px);
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(0,204,255,.2);
 z-index:999;
+box-shadow:0 8px 32px rgba(0,204,255,.1);
 }
 
 .logo{
-font-size:1.6rem;
+font-size:1.8rem;
 font-weight:900;
 background:linear-gradient(90deg,#ff00ff,#00ccff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+letter-spacing:2px;
 }
 
 nav ul{
 display:flex;
-gap:25px;
+gap:30px;
 list-style:none;
 flex-wrap:wrap;
 }
 
 nav ul li a{
 text-decoration:none;
-color:white;
+color:#d2dcff;
 transition:.4s;
-font-size:.9rem;
+font-size:.95rem;
+position:relative;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:linear-gradient(90deg,#ff00ff,#00ccff);
+transition:.4s;
 }
 
 nav ul li a:hover{
 color:#00ccff;
 }
 
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* ===== HERO SECTION ===== */
 .hero{
 height:100vh;
 background:
+linear-gradient(135deg,rgba(255,0,255,.1),rgba(0,204,255,.1)),
 linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop') center/cover;
 display:flex;
@@ -73,25 +96,53 @@ align-items:center;
 justify-content:center;
 text-align:center;
 padding:40px;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 20% 50%,rgba(255,0,255,.15),transparent),
+            radial-gradient(circle at 80% 80%,rgba(0,204,255,.15),transparent);
+pointer-events:none;
+}
+
+.hero > div{
+position:relative;
+z-index:2;
 }
 
 .hero h1{
 font-size:7vw;
 line-height:1;
 font-weight:900;
-background:linear-gradient(90deg,#ff00ff,#00ccff);
+background:linear-gradient(135deg,#ff00ff,#00ccff,#ff00ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 margin-bottom:25px;
+text-shadow:0 0 40px rgba(255,0,255,.5);
+animation:glow 3s ease-in-out infinite;
+letter-spacing:3px;
+}
+
+@keyframes glow{
+0%,100%{text-shadow:0 0 20px rgba(255,0,255,.5)}
+50%{text-shadow:0 0 40px rgba(0,204,255,.8)}
 }
 
 .hero p{
 max-width:900px;
 margin:auto;
-font-size:1.2rem;
-line-height:1.8;
+font-size:1.3rem;
+line-height:1.9;
 color:#d2dcff;
 margin-bottom:40px;
+animation:fadeInUp .8s ease-out;
 }
 
 .hero-buttons{
@@ -99,64 +150,109 @@ display:flex;
 gap:20px;
 justify-content:center;
 flex-wrap:wrap;
+animation:fadeInUp 1s ease-out;
 }
 
 .btn{
-padding:16px 35px;
-border-radius:40px;
+padding:18px 45px;
+border-radius:50px;
 text-decoration:none;
 font-weight:700;
 transition:.4s;
 display:inline-block;
+font-size:1rem;
+letter-spacing:1px;
 }
 
 .primary{
-background:linear-gradient(90deg,#ff00ff,#00ccff);
+background:linear-gradient(135deg,#ff00ff,#00ccff);
 color:white;
-box-shadow:0 0 25px #ff00ff;
+box-shadow:0 0 25px #ff00ff,0 0 50px rgba(255,0,255,.3);
+border:2px solid transparent;
 }
 
 .secondary{
 border:2px solid #00ccff;
 color:#00ccff;
+background:transparent;
+box-shadow:0 0 15px rgba(0,204,255,.3);
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.05);
-box-shadow:0 0 30px #00ccff;
+transform:translateY(-8px) scale(1.08);
+box-shadow:0 0 40px #00ccff,0 15px 40px rgba(0,204,255,.4);
 }
 
+.primary:hover{
+box-shadow:0 0 40px #ff00ff,0 0 70px rgba(255,0,255,.5);
+}
+
+@keyframes fadeInUp{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== SECTIONS ===== */
 section{
-padding:100px 8%;
+padding:120px 8%;
+position:relative;
+}
+
+section::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:1px;
+background:linear-gradient(90deg,transparent,#00ccff,transparent);
 }
 
 .section-title{
 text-align:center;
-font-size:3rem;
-margin-bottom:60px;
-color:#00ccff;
+font-size:3.5rem;
+margin-bottom:80px;
+background:linear-gradient(135deg,#00ccff,#ff00ff,#00ccff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+position:relative;
+letter-spacing:2px;
 }
 
+.section-title::after{
+content:'';
+display:block;
+width:100px;
+height:4px;
+background:linear-gradient(90deg,#ff00ff,#00ccff);
+margin:20px auto 0;
+border-radius:2px;
+box-shadow:0 0 20px #00ccff;
+}
+
+/* ===== PHONE SECTION ===== */
 .phone-section{
 display:flex;
 flex-wrap:wrap;
 align-items:center;
 justify-content:center;
-gap:60px;
+gap:80px;
 }
 
 .phone-section img{
 width:420px;
 max-width:90%;
-filter:drop-shadow(0 0 35px #00ccff);
+filter:drop-shadow(0 0 40px #00ccff) brightness(1.1);
 animation:float 4s ease-in-out infinite;
-border-radius:30px;
+border-radius:40px;
+border:2px solid #00ccff;
+box-shadow:0 0 60px rgba(0,204,255,.4);
 }
 
 @keyframes float{
-0%{transform:translateY(0)}
-50%{transform:translateY(-15px)}
-100%{transform:translateY(0)}
+0%{transform:translateY(0) rotateZ(-2deg)}
+50%{transform:translateY(-25px) rotateZ(2deg)}
+100%{transform:translateY(0) rotateZ(-2deg)}
 }
 
 .phone-info{
@@ -164,149 +260,506 @@ max-width:600px;
 }
 
 .phone-info h2{
-font-size:3rem;
+font-size:3.5rem;
 margin-bottom:20px;
 color:#ff00ff;
+letter-spacing:2px;
 }
 
 .phone-info p{
-line-height:1.8;
+line-height:1.9;
 color:#d4ddff;
-margin-bottom:30px;
+margin-bottom:40px;
+font-size:1.1rem;
 }
 
+/* ===== GRID CARDS ===== */
 .spec-grid,
 .features-grid,
 .products-grid,
 .gallery,
-.stats-grid{
+.stats-grid,
+.tech-grid,
+.comparison-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+gap:30px;
 }
 
 .spec-card,
 .feature-card,
 .product-card,
-.stat-card{
-background:#0b1120;
-padding:30px;
+.stat-card,
+.tech-card,
+.comparison-card{
+background:linear-gradient(135deg,#0b1120,#1a1f3a);
+padding:35px;
 border-radius:25px;
-border:1px solid rgba(255,255,255,.08);
-transition:.4s;
+border:1px solid rgba(0,204,255,.2);
+transition:.5s;
+position:relative;
+overflow:hidden;
+}
+
+.spec-card::before,
+.feature-card::before,
+.product-card::before,
+.stat-card::before,
+.tech-card::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(0,204,255,.1),transparent);
+transition:.6s;
+}
+
+.spec-card:hover::before,
+.feature-card:hover::before,
+.product-card:hover::before,
+.tech-card:hover::before{
+left:100%;
 }
 
 .spec-card:hover,
 .feature-card:hover,
 .product-card:hover,
-.stat-card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px #00ccff55;
+.stat-card:hover,
+.tech-card:hover,
+.comparison-card:hover{
+transform:translateY(-15px);
+box-shadow:0 20px 60px rgba(0,204,255,.3),inset 0 0 30px rgba(0,204,255,.1);
+border-color:rgba(0,204,255,.5);
 }
 
 .spec-card h3,
 .feature-card h3,
-.product-card h3{
+.product-card h3,
+.tech-card h3,
+.comparison-card h3{
 margin-bottom:15px;
 color:#00ccff;
+font-size:1.3rem;
+letter-spacing:1px;
 }
 
 .spec-card p,
 .feature-card p,
-.product-card p{
-line-height:1.7;
+.product-card p,
+.tech-card p,
+.comparison-card p{
+line-height:1.8;
 color:#d0d8ff;
+font-size:.95rem;
+}
+
+.spec-card .icon,
+.feature-card .icon,
+.tech-card .icon{
+font-size:2.5rem;
+color:#ff00ff;
+margin-bottom:15px;
+}
+
+/* ===== GALLERY ===== */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
 .gallery img{
 width:100%;
-height:260px;
+height:280px;
 object-fit:cover;
 border-radius:25px;
-transition:.4s;
+transition:.5s;
+border:2px solid rgba(0,204,255,.1);
+cursor:pointer;
 }
 
 .gallery img:hover{
-transform:scale(1.03);
-box-shadow:0 0 30px #ff00ff66;
+transform:scale(1.05) rotateZ(1deg);
+box-shadow:0 0 40px #ff00ff,0 0 60px rgba(255,0,255,.3);
+border-color:#ff00ff;
+}
+
+/* ===== VIDEO SECTION ===== */
+.video-section{
+background:linear-gradient(135deg,rgba(255,0,255,.1),rgba(0,204,255,.1));
+border-radius:40px;
+padding:60px 40px;
+border:2px solid rgba(0,204,255,.2);
 }
 
 .video-section iframe{
 width:100%;
-height:550px;
+height:600px;
 border:none;
 border-radius:30px;
-box-shadow:0 0 40px #00ccff;
+box-shadow:0 0 50px rgba(0,204,255,.3);
 }
 
+/* ===== SIGN-IN SECTION ===== */
+.signin-box{
+background:linear-gradient(135deg,#111827,#1e293b);
+padding:45px;
+border-radius:35px;
+border:2px solid rgba(0,204,255,.3);
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:30px;
+box-shadow:0 0 40px rgba(0,204,255,.2);
+}
+
+.signin-box img{
+width:80px;
+height:80px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #00ccff;
+box-shadow:0 0 20px rgba(0,204,255,.5);
+}
+
+.signin-info h2{
+color:#00ccff;
+font-size:1.5rem;
+margin-bottom:10px;
+}
+
+.signin-info p{
+color:#cfd8ff;
+}
+
+.signin-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+/* ===== PRODUCTS ===== */
 .product-card img{
 width:100%;
-height:220px;
+height:250px;
 object-fit:cover;
 border-radius:20px;
 margin-bottom:20px;
+transition:.4s;
+border:1px solid rgba(0,204,255,.2);
 }
 
+.product-card:hover img{
+transform:scale(1.08);
+border-color:#ff00ff;
+}
+
+.product-card h3{
+font-size:1.5rem;
+}
+
+.product-price{
+font-size:2rem;
+color:#00ccff;
+font-weight:900;
+margin:20px 0;
+letter-spacing:1px;
+}
+
+.product-rating{
+color:#ff00ff;
+font-size:1.1rem;
+margin:15px 0;
+}
+
+/* ===== STATS ===== */
 .stats-grid{
-margin-top:50px;
+margin-top:60px;
 }
 
 .stat-card{
 text-align:center;
 background:linear-gradient(135deg,#ff00ff22,#00ccff22);
+border:2px solid rgba(0,204,255,.2);
 }
 
 .stat-card h1{
-font-size:4rem;
+font-size:4.5rem;
 background:linear-gradient(90deg,#ff00ff,#00ccff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+font-weight:900;
 }
 
+.stat-card p{
+color:#d4ddff;
+font-size:1.1rem;
+margin-top:10px;
+letter-spacing:1px;
+}
+
+/* ===== COMPARISION TABLE ===== */
+.comparison-table{
+width:100%;
+border-collapse:collapse;
+margin-top:30px;
+border-radius:15px;
+overflow:hidden;
+}
+
+.comparison-table th{
+background:linear-gradient(90deg,#ff00ff,#00ccff);
+color:white;
+padding:20px;
+text-align:left;
+font-weight:700;
+}
+
+.comparison-table td{
+padding:20px;
+border-bottom:1px solid rgba(0,204,255,.2);
+color:#d4ddff;
+}
+
+.comparison-table tr:hover{
+background:rgba(0,204,255,.1);
+}
+
+.comparison-table tr:last-child td{
+border-bottom:none;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+margin-top:50px;
+}
+
+.testimonial-card{
+background:linear-gradient(135deg,#0b1120,#1a1f3a);
+padding:40px;
+border-radius:25px;
+border:1px solid rgba(0,204,255,.2);
+}
+
+.testimonial-card p{
+font-style:italic;
+color:#d4ddff;
+margin-bottom:20px;
+line-height:1.8;
+}
+
+.testimonial-author{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.testimonial-author img{
+width:50px;
+height:50px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid #00ccff;
+}
+
+.testimonial-author h4{
+color:#00ccff;
+margin-bottom:5px;
+}
+
+.testimonial-author p{
+font-size:.9rem;
+color:#97a4d4;
+margin:0;
+}
+
+/* ===== TECH SPECS ===== */
+.tech-grid{
+margin-top:40px;
+}
+
+.tech-card{
+background:linear-gradient(135deg,#0b1120,#1a1f3a);
+}
+
+.spec-bar{
+background:rgba(0,204,255,.1);
+border-radius:10px;
+height:30px;
+margin-top:15px;
+overflow:hidden;
+border:1px solid rgba(0,204,255,.2);
+}
+
+.spec-bar-fill{
+background:linear-gradient(90deg,#ff00ff,#00ccff);
+height:100%;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-weight:700;
+font-size:.85rem;
+}
+
+/* ===== FOOTER ===== */
 footer{
-padding:80px 8%;
+padding:100px 8%;
 text-align:center;
-background:#01040d;
-border-top:1px solid rgba(255,255,255,.08);
+background:linear-gradient(135deg,#01040d,#0a0f1d);
+border-top:2px solid rgba(0,204,255,.2);
 }
 
 footer h2{
-font-size:2rem;
-margin-bottom:20px;
+font-size:2.5rem;
+margin-bottom:15px;
 background:linear-gradient(90deg,#ff00ff,#00ccff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+letter-spacing:2px;
 }
 
 footer p{
 color:#97a4d4;
-margin-bottom:30px;
+margin-bottom:40px;
+font-size:1.1rem;
 }
 
 .socials{
 display:flex;
 justify-content:center;
-gap:25px;
+gap:30px;
 flex-wrap:wrap;
+margin-bottom:40px;
 }
 
 .socials a{
 color:#00ccff;
 text-decoration:none;
 transition:.4s;
+display:flex;
+align-items:center;
+justify-content:center;
+width:50px;
+height:50px;
+border:2px solid #00ccff;
+border-radius:50%;
+font-size:1.3rem;
 }
 
 .socials a:hover{
-color:#ff00ff;
+background:#ff00ff;
+color:white;
+border-color:#ff00ff;
+transform:scale(1.1);
 }
 
+.footer-bottom{
+border-top:1px solid rgba(0,204,255,.2);
+padding-top:30px;
+color:#97a4d4;
+}
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:900px){
 .hero h1{
-font-size:4rem;
+font-size:3.5rem;
+}
+
+.section-title{
+font-size:2.5rem;
 }
 
 .video-section iframe{
-height:300px;
+height:350px;
+}
+
+nav ul{
+gap:15px;
+font-size:.85rem;
+}
+
+.phone-section{
+gap:40px;
+}
+
+.phone-info h2{
+font-size:2.2rem;
+}
+
+.signin-box{
+flex-direction:column;
+text-align:center;
+}
+
+.signin-buttons{
+justify-content:center;
+}
+
+.spec-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:600px){
+nav{
+padding:15px 5%;
+}
+
+.logo{
+font-size:1.3rem;
+}
+
+nav ul{
+gap:10px;
+font-size:.75rem;
+}
+
+.hero{
+padding:20px;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.hero p{
+font-size:1rem;
+}
+
+.btn{
+padding:14px 30px;
+font-size:.9rem;
+}
+
+section{
+padding:60px 5%;
+}
+
+.section-title{
+font-size:1.8rem;
+}
+
+.phone-section img{
+width:100%;
+}
+
+.spec-grid,
+.features-grid,
+.products-grid,
+.gallery{
+grid-template-columns:1fr;
+}
+
+.video-section iframe{
+height:250px;
 }
 }
 
@@ -314,75 +767,81 @@ height:300px;
 </head>
 <body>
 
+<!-- ===== NAVIGATION ===== -->
 <nav>
-<div class="logo">OMNIFUSION X ULTRA</div>
+<div class="logo">⚡ OMNIFUSION X ULTRA</div>
 
 <ul>
 <li><a href="#home">HOME</a></li>
+<li><a href="#design">DESIGN</a></li>
 <li><a href="#features">FEATURES</a></li>
+<li><a href="#tech">TECH SPECS</a></li>
 <li><a href="#gallery">GALLERY</a></li>
 <li><a href="#products">PRODUCTS</a></li>
+<li><a href="#reviews">REVIEWS</a></li>
 <li><a href="#video">TRAILER</a></li>
-<li><a href="https://youtube.com" target="_blank">YOUTUBE</a></li>
-<li><a href="https://instagram.com" target="_blank">INSTAGRAM</a></li>
-<li><a href="https://discord.com" target="_blank">DISCORD</a></li>
 </ul>
 </nav>
 
+<!-- ===== HERO SECTION ===== -->
 <section class="hero" id="home">
 <div>
 <h1>OMNIFUSION<br>X ULTRA</h1>
 
 <p>
-The Ultimate AI Gaming Phone Ecosystem.
-Built for esports, futuristic gaming, RGB setups,
-AI smart homes, creators, and next-generation performance.
+The Ultimate AI Gaming Phone Ecosystem. Built for esports champions, 
+futuristic gamers, RGB enthusiasts, AI smart homes, content creators, 
+and next-generation ultra-performance standards.
 </p>
 
 <div class="hero-buttons">
-<a href="#products" class="btn primary">BUY NOW</a>
-<a href="#gallery" class="btn secondary">VIEW GALLERY</a>
-<a href="https://youtube.com" target="_blank" class="btn primary">WATCH TRAILER</a>
+<a href="#products" class="btn primary">🛒 BUY NOW</a>
+<a href="#gallery" class="btn secondary">📸 VIEW GALLERY</a>
+<a href="#video" class="btn primary">🎬 WATCH TRAILER</a>
 </div>
 </div>
 </section>
 
-<section>
-<h2 class="section-title">FUTURE DESIGN</h2>
+<!-- ===== FUTURE DESIGN SECTION ===== -->
+<section id="design">
+<h2 class="section-title">🎨 FUTURE DESIGN PHILOSOPHY</h2>
 
 <div class="phone-section">
-
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=900&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=900&auto=format&fit=crop" alt="OMNIFUSION Phone">
 
 <div class="phone-info">
 <h2>BUILT FOR VICTORY</h2>
 
 <p>
-Cyberpunk aesthetics, RGB liquid cooling,
-AI-powered gaming systems, holographic UI,
-and extreme next-gen performance.
+Cyberpunk aesthetics meets cutting-edge technology. Featuring RGB liquid cooling systems, 
+AI-powered gaming processors, holographic adaptive UI, extreme next-gen performance, 
+and quantum-encrypted cloud integration for ultimate competitive advantage.
 </p>
 
 <div class="spec-grid">
 
 <div class="spec-card">
+<div class="icon">📱</div>
 <h3>240Hz AMOLED</h3>
-<p>Ultra smooth gaming display.</p>
+<p>Ultra-smooth variable refresh gaming display with zero motion blur and 1ms response time.</p>
 </div>
 
 <div class="spec-card">
+<div class="icon">🔧</div>
 <h3>Snapdragon Gen 4</h3>
-<p>Extreme AI gaming power.</p>
+<p>Next-gen AI gaming processor with dedicated neural engine for real-time optimization.</p>
 </div>
 
 <div class="spec-card">
+<div class="icon">⚡</div>
 <h3>300W HyperCharge</h3>
-<p>Super-fast charging technology.</p>
+<p>Revolutionary super-fast charging technology. 0-100% in just 8 minutes with AI battery management.</p>
 </div>
 
 <div class="spec-card">
+<div class="icon">💾</div>
 <h3>32GB RAM</h3>
-<p>Maximum multitasking performance.</p>
+<p>Maximum multitasking performance. Seamless gaming, streaming, and creation simultaneously.</p>
 </div>
 
 </div>
@@ -390,207 +849,448 @@ and extreme next-gen performance.
 </div>
 </section>
 
+<!-- ===== FEATURES SECTION ===== -->
 <section id="features">
-<h2 class="section-title">NEXT-GEN FEATURES</h2>
+<h2 class="section-title">⚙️ NEXT-GEN FEATURES</h2>
 
 <div class="features-grid">
 
 <div class="feature-card">
+<div class="icon">🤖</div>
 <h3>AI Gaming Engine</h3>
-<p>Real-time performance optimization and frame boosting.</p>
+<p>Real-time performance optimization with predictive frame boosting. Automatically scales graphics 
+based on game demands while maintaining 240Hz stable performance.</p>
 </div>
 
 <div class="feature-card">
-<h3>Liquid Cooling</h3>
-<p>Advanced vapor chamber with RGB turbo cooling system.</p>
+<div class="icon">❄️</div>
+<h3>Liquid RGB Cooling</h3>
+<p>Advanced vapor chamber with dual-stage liquid cooling system. Features customizable RGB temperature 
+visualization and thermal imaging display.</p>
 </div>
 
 <div class="feature-card">
+<div class="icon">📷</div>
 <h3>200MP AI Camera</h3>
-<p>Capture cinematic 8K ultra-detail photos and videos.</p>
+<p>Capture cinematic 8K ultra-detail photos and videos with AI-powered noise reduction, 
+night mode enhancement, and real-time object tracking.</p>
 </div>
 
 <div class="feature-card">
-<h3>Cloud Gaming</h3>
-<p>Play AAA games instantly using AI cloud servers.</p>
+<div class="icon">☁️</div>
+<h3>Cloud Gaming Network</h3>
+<p>Play AAA games instantly using quantum-encrypted AI cloud servers. Stream at 4K@120fps 
+with zero latency lag compensation technology.</p>
 </div>
 
 <div class="feature-card">
+<div class="icon">🏠</div>
 <h3>Smart Home Control</h3>
-<p>Control your room, TV, PC, and ecosystem instantly.</p>
+<p>Control your room, TV, PC, lighting, temperature, and entire gaming ecosystem instantly. 
+Integrated IoT hub with AI voice commands and gesture controls.</p>
 </div>
 
 <div class="feature-card">
+<div class="icon">🌈</div>
 <h3>RGB Cyber Design</h3>
-<p>Customizable lighting effects and futuristic animations.</p>
+<p>Customizable lighting effects with 16.7 million colors. Reactive animations, music sync, 
+and holographic notification system.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">🔒</div>
+<h3>Quantum Security</h3>
+<p>Military-grade encryption with biometric + facial recognition. Secure AI wallet integration 
+for gaming transactions and NFT storage.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">🎮</div>
+<h3>Gaming Mode Pro</h3>
+<p>Dedicated gaming profiles with auto performance scaling, notification blocking, 
+and haptic feedback customization for every game.</p>
+</div>
+
+<div class="feature-card">
+<div class="icon">🌐</div>
+<h3>5G/6G Ready</h3>
+<p>Ultra-fast connectivity with multi-band antenna array. Sub-1ms latency for competitive online gaming 
+and zero-lag streaming capabilities.</p>
 </div>
 
 </div>
 </section>
 
+<!-- ===== TECH SPECS SECTION ===== -->
+<section id="tech">
+<h2 class="section-title">🔬 TECHNICAL SPECIFICATIONS</h2>
+
+<div class="tech-grid">
+
+<div class="tech-card">
+<h3>Display Technology</h3>
+<p>6.9" QHD+ AMOLED 240Hz</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:100%">100%</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Processor</h3>
+<p>Snapdragon AI Gen 4 (7nm)</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:95%">95%</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>RAM Configuration</h3>
+<p>32GB LPDDR6X Ultra-Fast</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:100%">100%</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Storage</h3>
+<p>1TB UFS 5.0 Lightning-Speed</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:98%">1TB</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Battery Capacity</h3>
+<p>6500mAh Graphene Tech</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:92%">92%</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Charging Speed</h3>
+<p>300W HyperCharge (8min)</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:100%">300W</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Camera System</h3>
+<p>200MP + 120MP Ultra-Wide</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:96%">8K 60fps</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>AI Engine Performance</h3>
+<p>45 TOPS Neural Processing</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:100%">45 TOPS</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Cooling System</h3>
+<p>Liquid RGB + Vapor Chamber</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:100%">Perfect</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Network Bands</h3>
+<p>5G + 6G Ready + WiFi 7</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:100%">Ultra-Fast</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Audio System</h3>
+<p>Spatial Stereo + Dolby Atmos</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:98%">Immersive</div>
+</div>
+</div>
+
+<div class="tech-card">
+<h3>Weight & Dimensions</h3>
+<p>225g | 6.9" x 3.2" x 8.2"mm</p>
+<div class="spec-bar">
+<div class="spec-bar-fill" style="width:85%">Perfect Build</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ===== GALLERY SECTION ===== -->
 <section id="gallery">
-<h2 class="section-title">CYBER GALLERY</h2>
+<h2 class="section-title">📸 CYBER GALLERY</h2>
 
 <div class="gallery">
-
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
-<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420">
-<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
-<img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8">
-
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e" alt="Futuristic Tech">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="Gaming Setup">
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="Phone Design">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="RGB Lighting">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Innovation">
+<img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8" alt="Performance">
 </div>
 </section>
 
-<section style="padding:40px 8%;">
+<!-- ===== SIGN-IN SECTION ===== -->
+<section style="padding:50px 8%;">
+<div class="signin-box">
+<div style="display:flex;align-items:center;gap:25px;flex:1;min-width:300px;">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300&auto=format&fit=crop" alt="Profile">
 
-<div style="background:#0b1120;padding:30px;border-radius:30px;border:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
-
-<div style="display:flex;align-items:center;gap:20px;">
-
-<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=300&auto=format&fit=crop"
-style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:3px solid #00ccff;">
-
-<div>
-<h2 style="color:#00ccff;">Welcome to Omnifusion Store</h2>
-<p style="color:#cfd8ff;">Sign in with your gaming account to continue shopping.</p>
+<div class="signin-info">
+<h2>🎮 Welcome to Omnifusion Store</h2>
+<p>Sign in with your gaming account to unlock exclusive deals, early access, and elite rewards.</p>
+</div>
 </div>
 
-</div>
-
-<div style="display:flex;gap:15px;flex-wrap:wrap;">
-
+<div class="signin-buttons">
 <a href="https://accounts.google.com" target="_blank" class="btn primary">
-SIGN IN WITH GOOGLE
+✓ GOOGLE SIGN-IN
 </a>
 
 <a href="https://www.amazon.in" target="_blank" class="btn secondary">
-OPEN AMAZON STORE
+AMAZON STORE
 </a>
-
 </div>
-
 </div>
-
 </section>
 
+<!-- ===== PRODUCTS SECTION ===== -->
 <section id="products">
-<h2 class="section-title">OMNIFUSION PRODUCTS</h2>
+<h2 class="section-title">🛍️ OMNIFUSION PRODUCTS</h2>
 
 <div class="products-grid">
 
-<div class="product-card" style="background:linear-gradient(135deg,#111827,#1e293b);border:2px solid #00ccff;">
+<div class="product-card" style="background:linear-gradient(135deg,#111827,#1e293b);border:2px solid #ff00ff;">
 
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="Limited Edition">
 
-<h3 style="font-size:2rem;">OMNIFUSION X ULTRA LIMITED EDITION</h3>
+<h3>⭐ OMNIFUSION X ULTRA LIMITED EDITION ⭐</h3>
+
+<div class="product-rating">⭐⭐⭐⭐⭐ 4.9/5 (2,847 reviews)</div>
 
 <p>
-Premium futuristic gaming smartphone with AI ecosystem,
-RGB cyber cooling, holographic controls,
-240Hz AMOLED display, ultra-fast Snapdragon AI chipset,
-and cinematic 8K gaming camera system.
+Premium futuristic gaming smartphone with complete AI ecosystem integration, RGB liquid cooling system, 
+holographic touch controls, 240Hz AMOLED variable refresh display, ultra-fast Snapdragon Gen 4 AI chipset, 
+cinematic 8K gaming camera system, quantum security encryption, and exclusive gold titanium frame.
 </p>
 
-<h1 style="margin:25px 0;color:#00ccff;">
-₹600999/-
-</h1>
+<div style="background:rgba(255,0,255,.1);padding:15px;border-radius:15px;margin:20px 0;border:1px solid #ff00ff;">
+<p style="color:#ff00ff;font-size:1.2rem;font-weight:700;">✨ EXCLUSIVE FEATURES ✨</p>
+<p style="color:#d4ddff;font-size:.9rem;margin-top:10px;">
+- Limited to 5,000 units worldwide<br>
+- Lifetime AI support & updates<br>
+- Free premium gaming accessories<br>
+- VIP community access
+</p>
+</div>
+
+<p class="product-price">₹600,999/-</p>
 
 <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
-
-<a href="https://www.amazon.in" target="_blank" class="btn primary">
-BUY ON AMAZON
-</a>
-
-<a href="https://attachment-parser-1--arjunpypel.replit.app/" target="_blank" class="btn secondary">
-OFFICIAL WEBSITE
-</a>
-
+<a href="https://www.amazon.in" target="_blank" class="btn primary">🛒 BUY ON AMAZON</a>
+<a href="https://attachment-parser-1--arjunpypel.replit.app/" target="_blank" class="btn secondary">🌐 OFFICIAL WEBSITE</a>
 </div>
 
 </div>
 
 <div class="product-card">
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420">
-<h3>OMNIFUSION X ULTRA</h3>
-<p>Flagship AI gaming smartphone with futuristic RGB cyber design, AI gaming engine, holographic UI, 240Hz AMOLED display, and ultra-fast performance.</p>
-
-<h2 style="margin:20px 0;color:#00ccff;">
-₹600999/-
-</h2>
-
-<a href="https://amazon.com" target="_blank" class="btn primary">
-BUY NOW
-</a>
-
-<a href="https://attachment-parser-1--arjunpypel.replit.app/" target="_blank" class="btn secondary" style="margin-top:15px;">
-OPEN OFFICIAL WEBSITE
-</a>
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="Flagship">
+<h3>🏆 OMNIFUSION X ULTRA FLAGSHIP</h3>
+<div class="product-rating">⭐⭐⭐⭐⭐ 4.8/5 (1,923 reviews)</div>
+<p>
+Flagship AI gaming smartphone featuring cyberpunk RGB cyber design, advanced AI gaming engine, holographic adaptive UI, 
+240Hz AMOLED display with adaptive color accuracy, and ultra-fast generational performance with dedicated gaming mode.
+</p>
+<p class="product-price">₹550,999/-</p>
+<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+<a href="https://amazon.com" target="_blank" class="btn primary">🛒 BUY NOW</a>
+<a href="https://attachment-parser-1--arjunpypel.replit.app/" target="_blank" class="btn secondary">📱 DETAILS</a>
+</div>
 </div>
 
 <div class="product-card">
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
-<h3>RGB CYBER HEADSET</h3>
-<p>Immersive esports audio system.</p>
-<a href="https://amazon.com" target="_blank" class="btn secondary">SHOP</a>
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e" alt="Headset">
+<h3>🎧 RGB CYBER GAMING HEADSET</h3>
+<div class="product-rating">⭐⭐⭐⭐⭐ 4.7/5 (892 reviews)</div>
+<p>
+Immersive esports audio system with 7.1 surround spatial sound, active noise cancellation, 
+customizable RGB illumination, and AI-powered voice clarity for competitive gaming.
+</p>
+<p class="product-price">₹24,999/-</p>
+<a href="https://amazon.com" target="_blank" class="btn secondary">🎵 SHOP NOW</a>
 </div>
 
 <div class="product-card">
-<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-<h3>AI GAMING LAPTOP</h3>
-<p>Extreme performance gaming ecosystem.</p>
-<a href="https://amazon.com" target="_blank" class="btn primary">EXPLORE</a>
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Laptop">
+<h3>💻 AI GAMING LAPTOP PRO</h3>
+<div class="product-rating">⭐⭐⭐⭐⭐ 4.9/5 (1,543 reviews)</div>
+<p>
+Extreme performance gaming ecosystem with RTX 4090 Ti, Intel Core Ultra Gen 3, 64GB RAM, 
+RGB mechanical keyboard, 165Hz 4K display, and AI performance optimization software.
+</p>
+<p class="product-price">₹349,999/-</p>
+<a href="https://amazon.com" target="_blank" class="btn primary">💰 EXPLORE</a>
 </div>
 
 </div>
 </section>
 
+<!-- ===== COMPARISON TABLE ===== -->
 <section>
-<h2 class="section-title">LIVE PERFORMANCE</h2>
+<h2 class="section-title">📊 OMNIFUSION vs COMPETITORS</h2>
 
-<div class="stats-grid">
-
-<div class="stat-card">
-<h1>240Hz</h1>
-<p>AMOLED DISPLAY</p>
-</div>
-
-<div class="stat-card">
-<h1>300W</h1>
-<p>HYPER CHARGE</p>
-</div>
-
-<div class="stat-card">
-<h1>32GB</h1>
-<p>ULTRA RAM</p>
-</div>
-
-<div class="stat-card">
-<h1>8K</h1>
-<p>AI CAMERA</p>
-</div>
-
-</div>
+<table class="comparison-table">
+<thead>
+<tr>
+<th>Feature</th>
+<th>🏆 OMNIFUSION X ULTRA</th>
+<th>Competitor A</th>
+<th>Competitor B</th>
+<th>Competitor C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Display Refresh</strong></td>
+<td style="color:#00ccff;font-weight:700;">240Hz AMOLED ⭐</td>
+<td>120Hz AMOLED</td>
+<td>165Hz IPS</td>
+<td>144Hz LCD</td>
+</tr>
+<tr>
+<td><strong>Processor</strong></td>
+<td style="color:#00ccff;font-weight:700;">Snapdragon Gen 4 ⭐</td>
+<td>Snapdragon Gen 3</td>
+<td>Apple A17 Pro</td>
+<td>MediaTek Dimensity</td>
+</tr>
+<tr>
+<td><strong>RAM</strong></td>
+<td style="color:#00ccff;font-weight:700;">32GB LPDDR6X ⭐</td>
+<td>16GB LPDDR5</td>
+<td>12GB LPDDR5</td>
+<td>12GB LPDDR5X</td>
+</tr>
+<tr>
+<td><strong>Charging</strong></td>
+<td style="color:#00ccff;font-weight:700;">300W HyperCharge ⭐</td>
+<td>120W Fast Charge</td>
+<td>65W Charge</td>
+<td>100W Charge</td>
+</tr>
+<tr>
+<td><strong>Camera</strong></td>
+<td style="color:#00ccff;font-weight:700;">200MP AI 8K ⭐</td>
+<td>108MP 4K</td>
+<td>48MP 8K</td>
+<td>50MP 4K</td>
+</tr>
+<tr>
+<td><strong>Battery</strong></td>
+<td style="color:#00ccff;font-weight:700;">6500mAh Graphene ⭐</td>
+<td>5000mAh Li-Po</td>
+<td>4600mAh Li-Po</td>
+<td>5500mAh Li-Po</td>
+</tr>
+<tr>
+<td><strong>AI Engine</strong></td>
+<td style="color:#00ccff;font-weight:700;">45 TOPS Neural ⭐</td>
+<td>20 TOPS</td>
+<td>16 TOPS</td>
+<td>18 TOPS</td>
+</tr>
+<tr>
+<td><strong>Cooling System</strong></td>
+<td style="color:#00ccff;font-weight:700;">Liquid RGB ⭐</td>
+<td>Vapor Chamber</td>
+<td>Standard Cooling</td>
+<td>Vapor Chamber</td>
+</tr>
+<tr>
+<td><strong>Price</strong></td>
+<td style="color:#00ccff;font-weight:700;">₹600,999 ⭐</td>
+<td>₹799,999</td>
+<td>₹1,099,999</td>
+<td>₹649,999</td>
+</tr>
+<tr>
+<td><strong>Gaming Performance</strong></td>
+<td style="color:#00ccff;font-weight:700;">Ultra Pro ⭐⭐⭐</td>
+<td>Pro ⭐⭐</td>
+<td>Standard ⭐</td>
+<td>Advanced ⭐⭐</td>
+</tr>
+</tbody>
+</table>
 </section>
 
-<section class="video-section" id="video">
-<h2 class="section-title">OFFICIAL TRAILER</h2>
+<!-- ===== REVIEWS SECTION ===== -->
+<section id="reviews">
+<h2 class="section-title">⭐ USER TESTIMONIALS</h2>
 
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-</section>
+<div class="testimonial-grid">
 
-<footer>
-<h2>OMNIFUSION X ULTRA</h2>
-<p>THE FUTURE OF AI GAMING</p>
-
-<div class="socials">
-<a href="https://youtube.com" target="_blank">YouTube</a>
-<a href="https://instagram.com" target="_blank">Instagram</a>
-<a href="https://discord.com" target="_blank">Discord</a>
-<a href="https://twitch.tv" target="_blank">Twitch</a>
+<div class="testimonial-card">
+<p>
+"OMNIFUSION X ULTRA completely revolutionized my gaming experience! The 240Hz display is buttery smooth, 
+and the AI gaming engine automatically optimizes every game perfectly. Worth every penny for competitive esports!"
+</p>
+<div class="testimonial-author">
+<img src="https://i.pravatar.cc/150?img=1" alt="Gamer 1">
+<div>
+<h4>Alex "Pro Gamer" Chen</h4>
+<p>Professional Esports Player • 50K Followers</p>
 </div>
-</footer>
+</div>
+</div>
 
-</body>
-</html>
+<div class="testimonial-card">
+<p>
+"The RGB liquid cooling system is absolutely insane! My phone never throttles during intense gaming sessions. 
+The holographic UI and smart home integration are futuristic features that actually work perfectly!"
+</p>
+<div class="testimonial-author">
+<img src="https://i.pravatar.cc/150?img=2" alt="Tech Creator">
+<div>
+<h4>Sarah "TechVibe" Martinez</h4>
+<p>Tech Content Creator • 200K YouTube</p>
+</div>
+</div>
+</div>
+
+<div class="testimonial-card">
+<p>
+"As a mobile photographer, the 200MP camera with 8K video recording is mind-blowing. AI noise reduction 
+and night mode produce studio-quality content. This is the camera phone I've been waiting for!"
+</p>
+<div class="testimonial-author">
+<img src="https://i.pravatar.cc/150?img=3" alt="Photographer">
+<div>
+<h4>Marcus "Visual Pro" Johnson</h4>
+<p>Professional Mobile Photographer • 150K Instagram</p>
+</div>
+</div>
+</div>
+
+<div class="testimonial-card">
+<p>
+"The 300W HyperCharge is absolutely game-changing. Full battery in 8 minutes? That's incredible! 
+Combined with the 32GB RAM, this phone handles my entire creative workflow without any lag."
+</p>
+<div class="testimonial-author">
+<img src="https://i.pravatar.cc/150?img=4" alt="Creator">
+<div>
+<h4>Emma "Creator Hub" Davis</h4>
+<p>Digital Content Creator • 300K TikTok</p>
+</div>
+</div>

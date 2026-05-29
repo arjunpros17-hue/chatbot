@@ -283,7 +283,8 @@ font-size:1.1rem;
 .comparison-grid,
 .media-grid,
 .photo-grid,
-.video-grid{
+.video-grid,
+.connect-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
@@ -297,7 +298,8 @@ gap:30px;
 .comparison-card,
 .media-card,
 .photo-card,
-.video-card{
+.video-card,
+.connect-card{
 background:linear-gradient(135deg,#0b1120,#1a1f3a);
 padding:35px;
 border-radius:25px;
@@ -314,7 +316,8 @@ overflow:hidden;
 .tech-card::before,
 .media-card::before,
 .photo-card::before,
-.video-card::before{
+.video-card::before,
+.connect-card::before{
 content:'';
 position:absolute;
 top:0;
@@ -332,7 +335,8 @@ transition:.6s;
 .tech-card:hover::before,
 .media-card:hover::before,
 .photo-card:hover::before,
-.video-card:hover::before{
+.video-card:hover::before,
+.connect-card:hover::before{
 left:100%;
 }
 
@@ -344,7 +348,8 @@ left:100%;
 .comparison-card:hover,
 .media-card:hover,
 .photo-card:hover,
-.video-card:hover{
+.video-card:hover,
+.connect-card:hover{
 transform:translateY(-15px);
 box-shadow:0 20px 60px rgba(0,204,255,.3),inset 0 0 30px rgba(0,204,255,.1);
 border-color:rgba(0,204,255,.5);
@@ -357,7 +362,8 @@ border-color:rgba(0,204,255,.5);
 .comparison-card h3,
 .media-card h3,
 .photo-card h3,
-.video-card h3{
+.video-card h3,
+.connect-card h3{
 margin-bottom:15px;
 color:#00ccff;
 font-size:1.3rem;
@@ -371,7 +377,8 @@ letter-spacing:1px;
 .comparison-card p,
 .media-card p,
 .photo-card p,
-.video-card p{
+.video-card p,
+.connect-card p{
 line-height:1.8;
 color:#d0d8ff;
 font-size:.95rem;
@@ -382,7 +389,8 @@ font-size:.95rem;
 .tech-card .icon,
 .media-card .icon,
 .photo-card .icon,
-.video-card .icon{
+.video-card .icon,
+.connect-card .icon{
 font-size:2.5rem;
 color:#ff00ff;
 margin-bottom:15px;
@@ -543,6 +551,90 @@ height:600px;
 border:none;
 border-radius:30px;
 box-shadow:0 0 50px rgba(0,204,255,.3);
+}
+
+/* ===== CONNECT SECTION ===== */
+.connect-section{
+background:linear-gradient(135deg,rgba(255,0,255,.15),rgba(0,204,255,.15));
+border-radius:40px;
+padding:60px 40px;
+border:2px solid rgba(0,204,255,.3);
+margin:40px 0;
+}
+
+.connect-card{
+text-align:center;
+background:linear-gradient(135deg,#0b1120,#1a1f3a);
+border:2px solid rgba(0,204,255,.2);
+}
+
+.connect-card:hover{
+transform:translateY(-15px);
+box-shadow:0 20px 60px rgba(0,204,255,.3);
+border-color:#ff00ff;
+}
+
+.connect-card .icon{
+font-size:3.5rem;
+color:#ff00ff;
+margin-bottom:20px;
+}
+
+/* ===== IMAGE SHOWCASE ===== */
+.image-showcase{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.image-card{
+position:relative;
+border-radius:25px;
+overflow:hidden;
+border:2px solid rgba(0,204,255,.2);
+cursor:pointer;
+transition:.5s;
+}
+
+.image-card img{
+width:100%;
+height:350px;
+object-fit:cover;
+transition:.5s;
+}
+
+.image-card:hover{
+transform:scale(1.05);
+box-shadow:0 20px 60px rgba(0,204,255,.3);
+border-color:#ff00ff;
+}
+
+.image-card:hover img{
+filter:brightness(1.1);
+}
+
+.image-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,204,255,.2);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+transition:.5s;
+}
+
+.image-card:hover .image-overlay{
+opacity:1;
+}
+
+.image-overlay i{
+font-size:3rem;
+color:#ff00ff;
 }
 
 /* ===== SIGN-IN SECTION ===== */
@@ -752,108 +844,137 @@ font-weight:700;
 font-size:.85rem;
 }
 
-/* ===== CONNECT SECTION ===== */
-.connect-section{
-background:linear-gradient(135deg,rgba(255,0,255,.15),rgba(0,204,255,.15));
-border-radius:40px;
-padding:60px 40px;
-border:2px solid rgba(0,204,255,.3);
+/* ===== VIDEO GALLERY ===== */
+.video-gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 margin:40px 0;
 }
 
-.connect-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-.connect-card{
-background:linear-gradient(135deg,#0b1120,#1a1f3a);
-padding:40px;
-border-radius:25px;
-border:2px solid rgba(0,204,255,.2);
-text-align:center;
-transition:.5s;
-}
-
-.connect-card:hover{
-transform:translateY(-15px);
-box-shadow:0 20px 60px rgba(0,204,255,.3);
-border-color:#ff00ff;
-}
-
-.connect-card .icon{
-font-size:3.5rem;
-color:#ff00ff;
-margin-bottom:20px;
-}
-
-.connect-card h3{
-color:#00ccff;
-font-size:1.5rem;
-margin-bottom:15px;
-}
-
-.connect-card p{
-color:#d4ddff;
-line-height:1.7;
-}
-
-/* ===== IMAGE SHOWCASE ===== */
-.image-showcase{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-margin-top:40px;
-}
-
-.image-card{
+.video-thumbnail{
 position:relative;
-border-radius:25px;
+border-radius:20px;
 overflow:hidden;
 border:2px solid rgba(0,204,255,.2);
 cursor:pointer;
 transition:.5s;
+background:#000;
+aspect-ratio:16/9;
 }
 
-.image-card img{
-width:100%;
-height:350px;
-object-fit:cover;
-transition:.5s;
-}
-
-.image-card:hover{
-transform:scale(1.05);
+.video-thumbnail:hover{
+transform:translateY(-10px);
 box-shadow:0 20px 60px rgba(0,204,255,.3);
 border-color:#ff00ff;
 }
 
-.image-card:hover img{
-filter:brightness(1.1);
+.video-thumbnail img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
 }
 
-.image-overlay{
+.video-thumbnail:hover img{
+filter:brightness(1.1);
+transform:scale(1.05);
+}
+
+.play-button{
 position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:70px;
+height:70px;
+background:linear-gradient(135deg,#ff00ff,#00ccff);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1.5rem;
+color:white;
+z-index:5;
+transition:.3s;
+box-shadow:0 0 30px rgba(255,0,255,.5);
+}
+
+.video-thumbnail:hover .play-button{
+transform:translate(-50%,-50%) scale(1.2);
+}
+
+.video-meta{
+position:absolute;
+bottom:15px;
+left:15px;
+right:15px;
+background:rgba(0,0,0,.8);
+padding:12px 15px;
+border-radius:10px;
+z-index:6;
+}
+
+.video-meta h4{
+color:#00ccff;
+font-size:.95rem;
+margin-bottom:5px;
+}
+
+.video-meta p{
+color:#d4ddff;
+font-size:.85rem;
+}
+
+/* ===== VIDEO MODAL ===== */
+.video-modal{
+display:none;
+position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,204,255,.2);
-display:flex;
+background:rgba(0,0,0,.95);
+z-index:2000;
 align-items:center;
 justify-content:center;
-opacity:0;
-transition:.5s;
+backdrop-filter:blur(10px);
 }
 
-.image-card:hover .image-overlay{
-opacity:1;
+.video-modal.active{
+display:flex;
 }
 
-.image-overlay i{
-font-size:3rem;
+.video-modal-content{
+position:relative;
+width:90%;
+max-width:1000px;
+max-height:80vh;
+border-radius:30px;
+overflow:hidden;
+border:2px solid #00ccff;
+box-shadow:0 0 60px rgba(0,204,255,.5);
+}
+
+.video-modal iframe{
+width:100%;
+height:600px;
+display:block;
+}
+
+.modal-close{
+position:absolute;
+top:-40px;
+right:0;
+color:#00ccff;
+font-size:2.5rem;
+cursor:pointer;
+transition:.3s;
+}
+
+.modal-close:hover{
 color:#ff00ff;
+transform:scale(1.2);
 }
 
 /* ===== FOOTER ===== */
@@ -914,6 +1035,33 @@ padding-top:30px;
 color:#97a4d4;
 }
 
+/* ===== QUICK LINKS ===== */
+.quick-links{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin:30px 0;
+}
+
+.quick-link-btn{
+padding:12px 30px;
+background:rgba(0,204,255,.1);
+border:2px solid #00ccff;
+color:#00ccff;
+text-decoration:none;
+border-radius:25px;
+transition:.4s;
+font-weight:700;
+font-size:.9rem;
+}
+
+.quick-link-btn:hover{
+background:#ff00ff;
+border-color:#ff00ff;
+color:white;
+}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){
 .hero h1{
@@ -954,18 +1102,8 @@ justify-content:center;
 grid-template-columns:repeat(2,1fr);
 }
 
-.lightbox-nav{
-top:20px;
-position:static;
-transform:none;
-}
-
-.lightbox-prev{
-left:auto;
-}
-
-.lightbox-next{
-right:auto;
+.connect-grid{
+grid-template-columns:repeat(2,1fr);
 }
 }
 
@@ -1018,7 +1156,8 @@ width:100%;
 .gallery,
 .media-grid,
 .photo-grid,
-.video-grid{
+.video-grid,
+.connect-grid{
 grid-template-columns:1fr;
 }
 
@@ -1026,8 +1165,12 @@ grid-template-columns:1fr;
 height:250px;
 }
 
-.connect-grid{
-grid-template-columns:1fr;
+.quick-links{
+flex-direction:column;
+}
+
+.quick-link-btn{
+width:100%;
 }
 }
 
@@ -1043,7 +1186,7 @@ grid-template-columns:1fr;
 <li><a href="#home">HOME</a></li>
 <li><a href="#design">DESIGN</a></li>
 <li><a href="#features">FEATURES</a></li>
-<li><a href="#tech">TECH SPECS</a></li>
+<li><a href="#tech">TECH</a></li>
 <li><a href="#connect">CONNECT</a></li>
 <li><a href="#media">MEDIA</a></li>
 <li><a href="#gallery">GALLERY</a></li>
@@ -1065,8 +1208,20 @@ and next-generation ultra-performance standards.
 <div class="hero-buttons">
 <a href="#products" class="btn primary">🛒 BUY NOW</a>
 <a href="#gallery" class="btn secondary">📸 VIEW GALLERY</a>
-<a href="#media" class="btn primary">🎬 WATCH TRAILER</a>
+<a href="#media" class="btn primary">🎬 WATCH VIDEOS</a>
 </div>
+</div>
+</section>
+
+<!-- ===== QUICK NAVIGATION LINKS ===== -->
+<section style="padding:60px 8%;text-align:center;background:linear-gradient(135deg,rgba(255,0,255,.1),rgba(0,204,255,.1));margin:0 8%;border-radius:30px;border:2px solid rgba(0,204,255,.2);">
+<h3 style="color:#00ccff;font-size:1.5rem;margin-bottom:30px;">⚡ QUICK ACCESS</h3>
+<div class="quick-links">
+<a href="omnifusion-video-embed.html" class="quick-link-btn" target="_blank">🎥 VIDEO SHOWCASE</a>
+<a href="pong-game.html" class="quick-link-btn" target="_blank">🎮 PONG GAME</a>
+<a href="#media" class="quick-link-btn">📺 MEDIA CENTER</a>
+<a href="#connect" class="quick-link-btn">🔗 CONNECTIVITY</a>
+<a href="#products" class="quick-link-btn">🛍️ SHOP NOW</a>
 </div>
 </section>
 
@@ -1395,7 +1550,103 @@ Your browser does not support the video tag.
 </div>
 
 </div>
+
+<!-- VIDEO GALLERY SECTION -->
+<h3 style="text-align:center;color:#00ccff;margin:80px 0 40px;font-size:2rem;">🎞️ VIDEO GALLERY</h3>
+
+<div class="video-gallery-grid">
+
+<div class="video-thumbnail" onclick="openVideoModal(0)">
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&h=281&fit=crop" alt="Product Launch">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>Product Launch Event</h4>
+<p>15:32 • 1.2M views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(1)">
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&h=281&fit=crop" alt="Gaming Performance">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>Gaming Performance Demo</h4>
+<p>12:45 • 892K views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(2)">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&h=281&fit=crop" alt="AI Camera">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>AI Camera 8K Showcase</h4>
+<p>18:20 • 658K views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(3)">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=281&fit=crop" alt="Cooling System">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>Liquid Cooling System</h4>
+<p>8:15 • 425K views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(4)">
+<img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=500&h=281&fit=crop" alt="Battery Charging">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>300W HyperCharge Test</h4>
+<p>6:42 • 523K views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(5)">
+<img src="https://images.unsplash.com/photo-1609042513639-29ba5f45a4b1?w=500&h=281&fit=crop" alt="RGB Features">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>RGB Customization Guide</h4>
+<p>10:18 • 387K views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(6)">
+<img src="https://images.unsplash.com/photo-1617638924702-92d37e439220?w=500&h=281&fit=crop" alt="Esports">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>Pro Esports Tournament</h4>
+<p>25:10 • 1.5M views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(7)">
+<img src="https://images.unsplash.com/photo-1591165951843-c5005b2483c3?w=500&h=281&fit=crop" alt="Smart Home">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>Smart Home Integration</h4>
+<p>14:35 • 298K views</p>
+</div>
+</div>
+
+<div class="video-thumbnail" onclick="openVideoModal(8)">
+<img src="https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=500&h=281&fit=crop" alt="Unboxing">
+<div class="play-button">▶</div>
+<div class="video-meta">
+<h4>Premium Unboxing</h4>
+<p>11:22 • 756K views</p>
+</div>
+</div>
+
+</div>
 </section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+<div class="video-modal-content">
+<span class="modal-close" onclick="closeVideoModal()">✕</span>
+<iframe id="videoFrame" width="100%" height="600" src="" title="Video Player" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</div>
 
 <!-- ===== GALLERY SECTION ===== -->
 <section id="gallery">
@@ -1760,7 +2011,7 @@ Combined with the 32GB RAM, this phone handles my entire creative workflow witho
 <!-- ===== JAVASCRIPT ===== -->
 <script>
 
-// Lightbox functionality
+// Image Lightbox
 const images = [
 'https://images.unsplash.com/photo-1542751371-adc38448a05e',
 'https://images.unsplash.com/photo-1518770660439-4636190af475',
@@ -1795,16 +2046,51 @@ currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
 document.getElementById('lightbox-image').src = images[currentImageIndex];
 }
 
-// Keyboard navigation for lightbox
+// Video Modal
+const videos = [
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ',
+'https://www.youtube.com/embed/dQw4w9WgXcQ'
+];
+
+function openVideoModal(index){
+document.getElementById('videoFrame').src = videos[index];
+document.getElementById('videoModal').classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal(){
+document.getElementById('videoModal').classList.remove('active');
+document.getElementById('videoFrame').src = '';
+document.body.style.overflow = 'auto';
+}
+
+// Keyboard Navigation
 document.addEventListener('keydown', function(event){
 if(document.getElementById('lightbox').classList.contains('active')){
 if(event.key === 'ArrowRight') nextImage();
 if(event.key === 'ArrowLeft') previousImage();
 if(event.key === 'Escape') closeLightbox();
 }
+if(document.getElementById('videoModal').classList.contains('active')){
+if(event.key === 'Escape') closeVideoModal();
+}
 });
 
-// Smooth scroll behavior
+// Modal Background Click
+document.getElementById('videoModal').addEventListener('click', function(e){
+if(e.target === this){
+closeVideoModal();
+}
+});
+
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 anchor.addEventListener('click', function (e){
 e.preventDefault();
